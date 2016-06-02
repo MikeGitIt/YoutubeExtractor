@@ -36,7 +36,7 @@ namespace ExampleApplication
              * Execute the audio downloader.
              * For GUI applications note, that this method runs synchronously.
              */
-            audioDownloader.Execute();
+            //audioDownloader.Execute();
         }
 
         private static void DownloadVideo(IEnumerable<VideoInfo> videoInfos)
@@ -45,7 +45,7 @@ namespace ExampleApplication
              * Select the first .mp4 video with 360p resolution
              */
             VideoInfo video = videoInfos
-                .First(info => info.VideoType == VideoType.Mp4 && info.Resolution == 360);
+                .First(info => info.VideoType == VideoType.Mp4 && info.Resolution == 480);
 
             /*
              * Create the video downloader.
@@ -68,7 +68,6 @@ namespace ExampleApplication
         private static void Main()
         {
             // Our test youtube link
-            const string link = "http://www.youtube.com/watch?v=6bMmhKz6KXg";
 
             /*
              * Get the available video formats.

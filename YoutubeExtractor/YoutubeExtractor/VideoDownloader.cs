@@ -35,6 +35,13 @@ namespace YoutubeExtractor
             this.OnDownloadStarted(EventArgs.Empty);
 
             var request = (HttpWebRequest)WebRequest.Create(this.Video.DownloadUrl);
+            request.KeepAlive = true;
+            request.Headers.Set(HttpRequestHeader.CacheControl, "max-age=0");
+            //request.Headers[HttpRequestHeader.AcceptEncoding] = "gzip, deflate";
+            request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+            request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+            request.UserAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36";
+            request.Headers.Add("DNT", @"1");
 
             if (this.BytesToDownload.HasValue)
             {

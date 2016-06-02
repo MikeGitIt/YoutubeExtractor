@@ -253,7 +253,7 @@ namespace YoutubeExtractor
 
             if (url.Contains("/v/"))
             {
-                url = "http://youtube.com" + new Uri(url).AbsolutePath.Replace("/v/", "/watch?v=");
+                url = "https://youtube.com" + new Uri(url).AbsolutePath.Replace("/v/", "/watch?v=");
             }
 
             url = url.Replace("/watch#", "/watch?");
@@ -267,7 +267,7 @@ namespace YoutubeExtractor
                 throw new ArgumentException("URL is not a valid youtube URL!");
             }
 
-            return "http://youtube.com/watch?v=" + v;
+            return "https://youtube.com/watch?v=" + v;
         }
 
         private static string Reverse(this string s)
